@@ -23,7 +23,6 @@ Este projeto captura o áudio do microfone em tempo real, transcreve e traduz pa
 ```
 
 3. Instale o ffmpeg
-   > **Nota:** A instalação do ffmpeg pode não ser realmente necessária para o funcionamento
 
 ```bash
   sudo apt update && sudo apt install ffmpeg
