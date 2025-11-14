@@ -63,7 +63,7 @@ cd translator
 export OPENAI_API_KEY='sua-chave-api-aqui'
 ```
 
-4. (Opcional) Verifique o índice do seu dispositivo de áudio e ajuste o `input_device_index` no arquivo `main.py`.
+4. Verifique o índice do seu dispositivo de áudio e ajuste o `input_device_index` no arquivo `main.py`.
 
 5. Execute o script:
 
