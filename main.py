@@ -15,8 +15,8 @@ if __name__ == "__main__":
         input_device_index=54,
     )
 
-    def generate_response(messages):
-        """Generate assistant's response using OpenAI."""
+    def generate_response_translation(messages):
+        """Generate translation using OpenAI."""
         response = client.chat.completions.create(
             model="gpt-5-mini",
             messages=messages,
@@ -31,7 +31,7 @@ if __name__ == "__main__":
         os.system('clear' if os.name == 'posix' else 'cls')
     
     def main():
-        """Main translation loop."""
+        """Main function to run the translation loop."""
         clear_console()
 
         system_prompt_message = {
@@ -50,22 +50,18 @@ if __name__ == "__main__":
         ui.run()
     
     def main_loop(ui, system_prompt_message):
+        """Main loop to capture speech and generate translations."""
         while True:
-            print("\nSay something!")
-
             # Capture user input from microphone
             user_text = recorder.text()
             ui.update_transcription("- " + user_text + "\n\n")
-            print(f"Input text: {user_text}")
 
             user_message = {'role': 'user', 'content': user_text}
 
-            # Stream translation
             ui.update_translation("- ")
-            print("Translation: ", end="", flush=True)
-            for chunk in generate_response([system_prompt_message, user_message]):
+            # Generate translation by OpenAI
+            for chunk in generate_response_translation([system_prompt_message, user_message]):
                 ui.update_translation(chunk)
-                print(chunk, end="", flush=True)
             ui.update_translation("\n\n")
-            print()
+
     main()
