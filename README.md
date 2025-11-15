@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto captura o áudio do microfone em tempo real, transcreve e traduz para português.
+Este projeto captura o áudio do microfone, transcreve e traduz para português.
 
 ## Requisitos
 
@@ -65,7 +65,28 @@ export OPENAI_API_KEY='sua-chave-api-aqui'
 
 4. Verifique o índice do seu dispositivo de áudio e ajuste o `input_device_index` no arquivo `main.py`.
 
-5. Execute o script:
+5. **Configuração de idiomas:**
+
+   > **Importante:** Por padrão, o sistema está configurado para:
+   >
+   > - **Transcrição:** Inglês (modelo `tiny.en`)
+   > - **Tradução:** Português
+
+   **Para alterar os idiomas:**
+
+   - **Transcrição:** No arquivo `main.py`, linha do `AudioToTextRecorder`, altere o parâmetro `model`:
+
+     - Para inglês: `model="tiny.en"` (padrão)
+     - Para outros idiomas: `model="tiny"` (modelo multilíngue)
+     - Outros modelos disponíveis: `base`, `small`, `medium`, `large`
+
+   - **Tradução:** No arquivo `main.py`, localize o `system_prompt_message` e altere:
+     ```python
+     'content': f'Translate the given text to portuguese. Output only the translated text.'
+     ```
+     Substitua `portuguese` pelo idioma desejado (ex: `english`, `spanish`, `french`, etc.)
+
+6. Execute o script:
 
 ```bash
 python main.py
