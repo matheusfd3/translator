@@ -10,8 +10,9 @@ if __name__ == "__main__":
 
     # Speech-to-Text Recorder Setup
     recorder = AudioToTextRecorder(
-        model="tiny.en",
         device="cpu",
+        model="tiny.en",
+        language="en",
         input_device_index=54,
     )
 
